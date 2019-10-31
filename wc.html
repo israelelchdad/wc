@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .reka{
+            display:flex;
+            background: #ddd;
+            justify-content:center; 
+            height: 100px;
+            align-items: center;
+          }
+          button{
+              height: 40%;
+              margin:15%;
+              
+          }
+    </style>
+</head>
+<body>
+    <div class="reka"> 
+    <button onclick="alert('1')">mybutton 1</button><br>
+    <button onclick="alert('2')">mybutton 2</button><br> 
+    <button onclick="alert('3')">mybutton 3</button>
+    </div>
+    <script>
+        const template =document.createElement('template');
+        template.innerHTML= 
+        `<style>
+        .reka{
+            display:flex;
+            background: #ddd;
+            justify-content:center; 
+            height: 100px;
+            align-items: center;
+          }
+          button{
+              height: 40%;
+              margin:15%;
+              
+          }
+    </style>
+    <div class="reka"> 
+    <button onclick="alert('1')">mybutton 1</button><br>
+    <button onclick="alert('2')">mybutton 2</button><br> 
+    <button onclick="alert('3')">mybutton 3</button>
+    </div>
+    `;
+    class button extends HTMLElement{
+        constructor(){
+            super();
+            this._shadowRoot = this.attachShadow({ mode: 'open' });
+            this._shadowRoot.appendChild(template.content.cloneNode(true));
+        
+
+        }
+    }
+    window.customElements.define('i-a',button);
+    
+    
+    </script>
+    <i-a></i-a>
+    <i-a></i-a>
+    <i-a></i-a>
+    <i-a></i-a>
+    <i-a></i-a>
+    
+</body>
+</html>
